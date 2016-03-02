@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
 //                OutputStream outputStream = socket.getOutputStream();
 //                outputStream.write(bytes);
 //                outputStream.flush();
+
                 File file1 = new File(Environment.getExternalStorageDirectory() + File.separator + "Android" + File.separator + "cqm.pcl");
                 FileOutputStream fos = new FileOutputStream(file1);
                 fos.write(bytes);
