@@ -28,10 +28,10 @@ public class PCLPrinter extends USBPrinter {
      */
     public void setDefaultValues() {
         unitOfMeasure = 300;
-        dotsPerInch = 75;
+        dotsPerInch = 300;
         pageSize = 2;
-        xPosition = yPosition = 100;
-        xScale = yScale = 0.5;
+        xPosition = yPosition = 0;//100;
+        xScale = yScale = 1;//0.5;
         int defaultData[] = {2, 3, 0, 8, 8, 8};
         setDataImage(defaultData);
     }
@@ -109,11 +109,11 @@ public class PCLPrinter extends USBPrinter {
         messageData = new byte[translator.getPCLSize()];
         // addUEL("PCL");
         resetPrinter();
-        addUnitOfMeasure(); // Unit-of-Measure (600 PCL units per inch)
-        addPageSize();
-        addESC();
-        addText("*p0P"); // Push (save) palette from the pallete stack
-        addPosition(); // Postion X,Y in PCL units (units of measure)
+//        addUnitOfMeasure(); // Unit-of-Measure (600 PCL units per inch)
+//        addPageSize();
+//        addESC();
+//        addText("*p0P"); // Push (save) palette from the pallete stack
+//        addPosition(); // Postion X,Y in PCL units (units of measure)
         addConfigureImageData();
         addDotsPerInch();
         addImageFile();
@@ -135,7 +135,7 @@ public class PCLPrinter extends USBPrinter {
         addESC();
         addText("*t" + translator.getWidth() * (9.6 * xScale) + "h" + translator.getHeight() * (9.6 * yScale) + "V");
         addESC();
-        addText("*r3A");
+        addText("*r1A");
         addESC();
         addText("*b0M"); // Mode: unecode
         translator.addPCLImage(this);

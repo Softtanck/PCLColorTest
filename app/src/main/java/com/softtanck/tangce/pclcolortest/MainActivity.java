@@ -33,24 +33,24 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... params) {
-            String path = Environment.getExternalStorageDirectory() + File.separator + "Android" + File.separator + "test_new.png";
-            File file = new File(path);
+//            String path = Environment.getExternalStorageDirectory() + File.separator + "Android" + File.separator + "test_new.png";
+            String newFile = Environment.getExternalStorageDirectory() + File.separator + "Android" + File.separator + "cqm.png";
             FileInputStream fis = null;
             try {
 
-                Bitmap bitmap = BitmapFactory.decodeFile(path);
-                bitmap = resizeImage(bitmap, 400, 600);
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, new FileOutputStream(path));
-                fis = new FileInputStream(path);
+//                Bitmap bitmap = BitmapFactory.decodeFile(path);
+//                bitmap = resizeImage(bitmap, 1160, 1700);
+//                bitmap.compress(Bitmap.CompressFormat.PNG, 100, new FileOutputStream(newFile));
+                fis = new FileInputStream(newFile);
                 PCLPrinter pclPrinter = new PCLPrinter(fis);
                 byte[] bytes = pclPrinter.print();
 //                Socket socket = new Socket("10.50.40.100", 9100);
 //                OutputStream outputStream = socket.getOutputStream();
 //                outputStream.write(bytes);
 //                outputStream.flush();
-//                File file1 = new File(Environment.getExternalStorageDirectory() + File.separator + "Android" + File.separator + "cqm.pcl");
-//                FileOutputStream fos = new FileOutputStream(file1);
-//                fos.write(bytes);
+                File file1 = new File(Environment.getExternalStorageDirectory() + File.separator + "Android" + File.separator + "cqm.pcl");
+                FileOutputStream fos = new FileOutputStream(file1);
+                fos.write(bytes);
 //                Log.d("Tanck", "over");
             } catch (FileNotFoundException e) {
                 e.printStackTrace();

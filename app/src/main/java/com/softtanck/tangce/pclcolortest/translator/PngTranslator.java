@@ -309,7 +309,7 @@ public class PngTranslator implements Translator {
         int mod = (4 - (dataWidth) % 4) % 4;
         for (int i = 0; i < pixelsHeight; i++) {
             printer.addESC();
-            Log.d("Tanck", "--->" + dataWidth + mod);
+//            Log.d("Tanck", "--->" + dataWidth + mod);
             printer.addText("*b" + (dataWidth + mod) + "W");
             for (int j = 0; j < pixelsWidth; j++) {
                 printer.add(pixels[pixCursor++]); // R
